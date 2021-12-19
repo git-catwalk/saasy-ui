@@ -3,19 +3,19 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Config} from "./config";
 import {Observable} from "rxjs";
 import  {App}  from "./app-model";
-import {Page} from "./page";
+
 
 @Injectable()
 export class AppService {
     constructor(public http: HttpClient,public config:Config ) { }
 
-    search(term:string = '',page:number = 0,limit:number = 50):Observable<Page<App>> {
+    search(term:string = '',page:number = 0,limit:number = 50):Observable<Array<App>> {
         let url:string = this.config.api + "/rest/app/search";
         const params = new HttpParams()
         .set('page', String(page))
         .set('term',term)
         .set('limit',limit);
-        return this.http.get<Page<App>>(url, {params});
+        return this.http.get<Array<App>>(url, {params});
     }
 
     list():Observable<Array<App>> {

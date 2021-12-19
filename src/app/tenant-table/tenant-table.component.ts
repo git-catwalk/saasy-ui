@@ -43,8 +43,8 @@ export class TenantTableComponent implements OnInit {
 
   search() {
     this.service.search(this._currentSearchValue,this._currentPage -1,this._pageSize).subscribe((p)=>{
-      this.dataSource = p.content;
-      this._dataLength = p.totalElements;
+      this.dataSource = p;
+      this._dataLength = p.length;
     })
   }
 
