@@ -66,7 +66,7 @@ export class AppFormComponent implements OnInit {
   }
 
   get plans(){
-    return this.form.get('plans') as FormArray
+    return this.form.get('plans') as FormArray;
   }
 
   createPlans(): FormArray {
@@ -89,7 +89,7 @@ export class AppFormComponent implements OnInit {
 
   addPlan(): void {
     let items = this.form.get('plans') as FormArray;
-    items.push(this.createPlan({name:'',monthly:null,yearly:null,description:'', planId:'',features:[]}));
+    items.insert(0,this.createPlan({name:'',monthly:null,yearly:null,description:'', planId:'',features:[]}));
   }
 
   removePlan(i: number) {

@@ -33,7 +33,7 @@
             </mat-chip-list>
           </mat-form-field>
       </div>
-
+  <button type="button" (click)="addPlan()">Add Plan</button>
       <div class='plan' formArrayName="plans" *ngFor="let plan of plans['controls']; let i = index;">
         <h2>{{plan.get('name')?.value}} Plan</h2>
         <div [formGroupName]="i" class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
@@ -73,6 +73,6 @@
           <button type="button" mat-button (click)="removePlan(i)">Remove</button>
         </div>
         </div>
-    <button type="button" (click)="addPlan()">Add Plan</button>
+
 </form>
 <!--<pre><code>{{item |json}}</code></pre>-->
