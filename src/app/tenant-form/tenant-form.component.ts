@@ -53,6 +53,9 @@ export class TenantFormComponent implements OnInit {
 				name:'',
 				monthly:0,
 				yearly:0,
+        description:'',
+        planId:'',
+        features:[]
 			},
 		};
   }

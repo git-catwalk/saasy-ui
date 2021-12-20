@@ -23,7 +23,10 @@ export interface User{
 
 export interface Plan{
  name:string | null;
+ description:string | null;
+ planId:string | null;
  monthly:number | null;
  yearly:number | null;
+ features:Array<string> | null;
 }
 

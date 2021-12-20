@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup} from "@angular/forms";
 import { ActivatedRoute, Router} from "@angular/router";
 import {PageEvent} from "@angular/material/paginator";
 import {AppService} from "../services/app.service";
-import {App} from "../services/app-model";
+import {App, Plan} from "../services/app-model";
 
 @Component({
   selector: 'app-app-table',
@@ -20,11 +20,10 @@ export class AppTableComponent implements OnInit {
   dataSource:App[]  = [];
 
   tableColumns = [
-    'id',
-    'owner',
     'name',
     'plans',
     'roles',
+    'owner',
     'action'
   ];
 
@@ -77,5 +76,9 @@ export class AppTableComponent implements OnInit {
     this._currentPage = $event.pageIndex + 1;
     this._pageSize = $event.pageSize;
     return this.search();
+  }
+
+  getPlans(plans: Array<Plan>) {
+     return plans.map( p => { return ' ' + p.name + '-' + p.monthly;});
   }
 }

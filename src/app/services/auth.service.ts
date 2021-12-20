@@ -62,31 +62,29 @@ export class AuthService {
         return this.oauthService.silentRefresh()
           .then(() => Promise.resolve())
           .catch(result => {
-            const errorResponsesRequiringUserInteraction = [
-              'interaction_required',
-              'login_required',
-              'account_selection_required',
-              'consent_required',
-            ];
-
-            if (result
-              && result.reason
-              && errorResponsesRequiringUserInteraction.indexOf(result.reason.error) >= 0) {
+            const errorResponsesRequiringUserInteraction = ['interaction_required', 'login_required', 'account_selection_required', 'consent_required'];
+            if (result && result.reason && errorResponsesRequiringUserInteraction.indexOf(result.reason.error) >= 0) {
               console.warn('User interaction is needed to log in, we will wait for the user to manually log in.');
               return Promise.resolve();
             }
             return Promise.reject(result);
           });
       })
+      .then(() => {
+        this.isDoneLoadingSubject$.next(true);
+        if (this.oauthService.state && this.oauthService.state !== 'undefined' && this.oauthService.state !== 'null') {
+          this.router.navigateByUrl(this.oauthService.state);
+        }
+      })
       .catch(() => this.isDoneLoadingSubject$.next(true));
   }
 
   public login(targetUrl?: string) {
-    console.log(targetUrl);
     this.oauthService.initLoginFlow(targetUrl || '/');
   }
 
   public logout() {
+    localStorage.clear();
     sessionStorage.clear();
     this.oauthService.logOut();
   }

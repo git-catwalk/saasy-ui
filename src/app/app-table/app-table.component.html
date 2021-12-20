@@ -29,7 +29,7 @@
       </ng-container>
       <ng-container  matColumnDef="plans">
         <mat-header-cell *matHeaderCellDef>Plans</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.plans}}</mat-cell>
+        <mat-cell *matCellDef="let element">{{getPlans(element.plans)}}</mat-cell>
       </ng-container>
       <ng-container  matColumnDef="roles">
         <mat-header-cell *matHeaderCellDef>Roles</mat-header-cell>

@@ -11,19 +11,18 @@ import {AppTableComponent} from "./app-table/app-table.component";
 import {TenantTableComponent} from "./tenant-table/tenant-table.component";
 
 const routes: Routes = [
-		{path : 'app',     			component:AppFormComponent},
-		{path : 'app/:id',     			component:AppFormComponent},
-		{path : 'tenant',     			component:TenantFormComponent},
-		{path : 'tenant/:id',     			component:TenantFormComponent},
-		{path : 'apps',     			component:AppTableComponent},
-		{path : 'tenants',     			component:TenantTableComponent},
-
-   {path : 'home',             component: HomeComponent},
-   {path : 'login',            component: LoginComponent},
-   {path : 'callback',         component: CallbackComponent},
-   {path : 'dashboard',        component: DashboardComponent,canActivate: [AuthGuard]},
-   {path : 'docs',             loadChildren: () => import('./docs/docs.module').then(m => m.DocsModule) },
-   {path : '**',               redirectTo: '/home'}
+  {path : 'app',     			    component:AppFormComponent,canActivate: [AuthGuard]},
+  {path : 'app/:id',     		  component:AppFormComponent,canActivate: [AuthGuard]},
+  {path : 'tenant',     		  component:TenantFormComponent,canActivate: [AuthGuard]},
+  {path : 'tenant/:id',       component:TenantFormComponent,canActivate: [AuthGuard]},
+  {path : 'apps',     			  component:AppTableComponent,canActivate: [AuthGuard]},
+  {path : 'tenants',     		  component:TenantTableComponent,canActivate: [AuthGuard]},
+  {path : 'home',             component: HomeComponent},
+  {path : 'login',            component: LoginComponent},
+  {path : 'callback',         component: CallbackComponent},
+  {path : 'dashboard',        component: DashboardComponent,canActivate: [AuthGuard]},
+  {path : 'docs',             loadChildren: () => import('./docs/docs.module').then(m => m.DocsModule) },
+  {path : '**',               redirectTo: '/home'}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
