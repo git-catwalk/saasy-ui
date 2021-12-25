@@ -20,10 +20,12 @@ export class TenantTableComponent implements OnInit {
   dataSource:Tenant[]  = [];
 
   tableColumns = [
-    'id',
-    'tenant',
-    'users',
+    'displayName',
+    'appName',
     'plan',
+    'ownerName',
+    'users',
+    'active',
     'action'
   ];
 

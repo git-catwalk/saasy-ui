@@ -81,4 +81,9 @@ export class AppTableComponent implements OnInit {
   getPlans(plans: Array<Plan>) {
      return plans.map( p => { return ' ' + p.name + '-' + p.monthly;});
   }
+
+  view(element:any) {
+    let url = '/app-view/' + element.id;
+    this.router.navigate([url]);
+  }
 }

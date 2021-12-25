@@ -9,10 +9,13 @@ import {AppFormComponent} from "./app-form/app-form.component";
 import {TenantFormComponent} from "./tenant-form/tenant-form.component";
 import {AppTableComponent} from "./app-table/app-table.component";
 import {TenantTableComponent} from "./tenant-table/tenant-table.component";
+import { AppViewComponent } from './app-view/app-view.component';
+
 
 const routes: Routes = [
   {path : 'app',     			    component:AppFormComponent,canActivate: [AuthGuard]},
   {path : 'app/:id',     		  component:AppFormComponent,canActivate: [AuthGuard]},
+  {path : 'app-view/:id',     component:AppViewComponent,canActivate: [AuthGuard]},
   {path : 'tenant',     		  component:TenantFormComponent,canActivate: [AuthGuard]},
   {path : 'tenant/:id',       component:TenantFormComponent,canActivate: [AuthGuard]},
   {path : 'apps',     			  component:AppTableComponent,canActivate: [AuthGuard]},

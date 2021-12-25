@@ -25,6 +25,10 @@ import {AppFormComponent} from "./app-form/app-form.component";
 import {TenantFormComponent} from "./tenant-form/tenant-form.component";
 import {AppTableComponent} from "./app-table/app-table.component";
 import {TenantTableComponent} from "./tenant-table/tenant-table.component";
+import { AppViewComponent } from './app-view/app-view.component';
+import { PricingViewComponent } from './pricing-view/pricing-view.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { UserTableComponent } from './user-table/user-table.component';
 
 
 @NgModule({
@@ -39,6 +43,10 @@ import {TenantTableComponent} from "./tenant-table/tenant-table.component";
 		TenantFormComponent,
 		AppTableComponent,
 		TenantTableComponent,
+  AppViewComponent,
+  PricingViewComponent,
+  UserFormComponent,
+  UserTableComponent,
 
   ],
   imports: [
@@ -54,7 +62,7 @@ import {TenantTableComponent} from "./tenant-table/tenant-table.component";
     MatCarouselModule,
     OAuthModule.forRoot({
       resourceServer: {
-        allowedUrls: ['http://localhost:9094/rest/'],
+        allowedUrls: ['http://localhost:9096/rest/'],
         sendAccessToken: true
       }
     }),

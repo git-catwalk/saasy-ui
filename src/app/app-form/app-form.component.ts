@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import { ActivatedRoute, Router} from "@angular/router";
 import {AppService} from "../services/app.service";
-import {App, Plan} from "../services/app-model";
+import {App, AppModel, Plan} from "../services/app-model";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 
@@ -23,7 +23,7 @@ export class AppFormComponent implements OnInit {
   form:FormGroup;
 
   constructor(private fb: FormBuilder,private service:AppService,private router: Router,private route: ActivatedRoute) {
-    this.item = this.emptyItem();
+    this.item = AppModel.emptyApp();
     this.form = this.createForm();
   }
 
@@ -47,19 +47,10 @@ export class AppFormComponent implements OnInit {
      this.router.navigate(['/apps']).then();
   }
 
-  public emptyItem():App{
-    return {
-			id:null,
-			owner:'',
-			name:'',
-			plans:[],
-			roles:[],
-		};
-  }
-
   public createForm():FormGroup{
      return this.fb.group({
         "name": [this.item.name],
+        "jwkSetUri": [this.item.jwkSetUri],
         "roles": this.fb.array(this.item.roles?this.item.roles:[]),
         "plans": this.createPlans()
      });
@@ -89,7 +80,7 @@ export class AppFormComponent implements OnInit {
 
   addPlan(): void {
     let items = this.form.get('plans') as FormArray;
-    items.insert(0,this.createPlan({name:'',monthly:null,yearly:null,description:'', planId:'',features:[]}));
+    items.insert(0,this.createPlan({name:'',monthly:null,yearly:null,description:'', planId:'',features:[],suggested:false}));
   }
 
   removePlan(i: number) {

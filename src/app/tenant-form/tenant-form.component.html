@@ -9,23 +9,41 @@
     <button (click)="save()" mat-button mat-stroked-button>Save</button>
   </mat-toolbar-row>
 </mat-toolbar>
-<form fxLayout="column" [formGroup]="form">
-      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-        <mat-form-field color="warn"  appearance="outline">
-          <mat-label>Tenant</mat-label>
-          <input matInput name="tenant" formControlName="tenant" placeholder="Tenant"/>
-        </mat-form-field>
-      </div>
-      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-        <mat-form-field color="warn"  appearance="outline">
-          <mat-label>Users</mat-label>
-          <input matInput name="users" formControlName="users" placeholder="Users"/>
-        </mat-form-field>
-      </div>
-      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-        <mat-form-field color="warn"  appearance="outline">
-          <mat-label>Plan</mat-label>
-          <input matInput name="plan" formControlName="plan" placeholder="Plan"/>
-        </mat-form-field>
-      </div>
+<form  [formGroup]="form">
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+    <mat-form-field appearance="outline" fxFlex="35">
+      <mat-label>Tenant Name</mat-label>
+      <input matInput formControlName="displayName" required>
+      <mat-icon matSuffix class="secondary-text">group</mat-icon>
+      <mat-error>Tenant name is required!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="35">
+      <mat-label>App</mat-label>
+      <mat-select formControlName="app" [compareWith]="objectComparisonFunction" (selectionChange)="getApp()">
+        <mat-option *ngFor="let appIdName of appIds" [value]="appIdName">
+          {{appIdName.name}}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix class="secondary-text">group</mat-icon>
+      <mat-error>App is required!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="30">
+      <mat-label>Plan</mat-label>
+      <mat-select formControlName="planId" >
+        <mat-option *ngFor="let plan of app.plans" [value]="plan.planId">
+          {{plan.name}}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix class="secondary-text">group</mat-icon>
+      <mat-error>App is required!</mat-error>
+    </mat-form-field>
+  </div>
+    <app-user-form formGroupName="owner" [roleList]="app.roles" [group]="getTenantUser()" [user]="tenant.owner" ></app-user-form>
+
+   <app-user-table formControlName="users" [dataSource]="tenant.users"></app-user-table>
+
 </form>
+<!--<pre><code>{{form.getRawValue() | json}}</code></pre>-->
