@@ -1,0 +1,8 @@
+<div class="columns" *ngFor="let plan of  plans">
+  <ul class="price">
+    <li class="header">{{plan.name}}</li>
+    <li class="grey">${{plan.monthly}} / month</li>
+    <li *ngFor="let feature of plan.features">{{feature}}</li>
+    <li class="grey"><a href="#" class="button">Sign Up</a></li>
+  </ul>
+</div>

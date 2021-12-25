@@ -1,0 +1,53 @@
+<mat-toolbar color="accent" >
+  <mat-toolbar-row>
+    <mat-icon fxHide.xs>web</mat-icon>
+    <mat-divider [vertical]="true"></mat-divider>
+    <mat-label fxHide.xs> Users</mat-label>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="flex-stretch"></div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <button (click)="add()" mat-button mat-stroked-button>New</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-table [dataSource]="dataSource">
+  <ng-container  matColumnDef="username">
+    <mat-header-cell *matHeaderCellDef>User Name</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.username}}</mat-cell>
+  </ng-container>
+  <ng-container  matColumnDef="firstname">
+    <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.firstname}}</mat-cell>
+  </ng-container>
+  <ng-container  matColumnDef="lastname">
+    <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.lastname}}</mat-cell>
+  </ng-container>
+  <ng-container  matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
+  </ng-container>
+  <ng-container  matColumnDef="roles">
+    <mat-header-cell *matHeaderCellDef>Roles</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.roles}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <th id="action" mat-header-cell *matHeaderCellDef>Action</th>
+    <td  (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">
+      <button  mat-icon-button [matMenuTriggerFor]="action_menu" aria-label="Action menu selection">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu xPosition="before"  #action_menu="matMenu">
+        <button  class="action-menu" (click)="rowClicked(element)" mat-menu-item>
+          <mat-icon color="accent">edit</mat-icon>
+          Edit
+        </button>
+        <button (click)="delete(element)" mat-menu-item>
+          <mat-icon color="accent">delete</mat-icon>
+          Delete
+        </button>
+      </mat-menu>
+    </td>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+  <mat-row  *matRowDef="let row; columns: tableColumns"></mat-row>
+</mat-table>
