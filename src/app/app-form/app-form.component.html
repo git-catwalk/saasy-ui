@@ -37,46 +37,7 @@
             </mat-chip-list>
           </mat-form-field>
       </div>
-  <button type="button" (click)="addPlan()">Add Plan</button>
-      <div class='plan' formArrayName="plans" *ngFor="let plan of plans['controls']; let i = index;">
-        <h2>{{plan.get('name')?.value}} Plan</h2>
-        <div [formGroupName]="i" class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-          <mat-form-field color="warn"  appearance="outline">
-            <mat-label>Name</mat-label>
-            <input matInput name="name" formControlName="name" placeholder="Name"/>
-          </mat-form-field>
-          <mat-form-field color="warn"  appearance="outline">
-            <mat-label>Plan Id</mat-label>
-            <input matInput name="planId" formControlName="planId" placeholder="Plan Id"/>
-          </mat-form-field>
-          <mat-form-field color="warn"  appearance="outline">
-            <mat-label>Monthly</mat-label>
-            <input matInput name="monthly" formControlName="monthly" placeholder="Name"/>
-          </mat-form-field>
-          <mat-form-field color="warn"  appearance="outline">
-            <mat-label>Yearly</mat-label>
-            <input matInput name="yearly" formControlName="yearly" placeholder="Name"/>
-          </mat-form-field>
-
-        </div>
-        <div [formGroupName]="i"  class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-          <mat-form-field class="example-chip-list">
-            <mat-chip-list #chipList aria-label="Role selection" formArrayName="features">
-              <mat-chip *ngFor="let feature of getFeatureControls(i).value" [selectable]="selectable" [removable]="removable"
-                        (removed)="removeFeature(i,feature)">
-                {{feature}}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-              </mat-chip>
-              <input placeholder="New feature..."
-                     [matChipInputFor]="chipList"
-                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                     [matChipInputAddOnBlur]="addOnBlur"
-                     (matChipInputTokenEnd)="addFeature(i,$event)">
-            </mat-chip-list>
-          </mat-form-field>
-          <button type="button" mat-button (click)="removePlan(i)">Remove</button>
-        </div>
-        </div>
+      <app-plan-table  (dataSourceChange)="updateDatasource($event)" formControlName="plans" [dataSource]="item.plans"></app-plan-table>
 
 </form>
 <!--<pre><code>{{item |json}}</code></pre>-->

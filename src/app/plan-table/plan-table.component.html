@@ -3,7 +3,7 @@
     <mat-toolbar-row>
       <mat-icon fxHide.xs>web</mat-icon>
       <mat-divider [vertical]="true"></mat-divider>
-      <mat-label fxHide.xs> Users</mat-label>
+      <mat-label fxHide.xs> Plans</mat-label>
       <mat-divider [vertical]="true"></mat-divider>
       <div class="flex-stretch"></div>
       <mat-divider [vertical]="true"></mat-divider>
@@ -11,27 +11,40 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-table [dataSource]="dataSource">
-    <ng-container  matColumnDef="username">
-      <mat-header-cell *matHeaderCellDef>User Name</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.username}}</mat-cell>
-    </ng-container>
+
     <ng-container  matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Plan Name</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
     </ng-container>
 
-    <ng-container  matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
-    </ng-container>
-    <ng-container  matColumnDef="roles">
-      <mat-header-cell *matHeaderCellDef>Roles</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.roles}}</mat-cell>
+    <ng-container  matColumnDef="planId">
+      <mat-header-cell *matHeaderCellDef>Plan Id</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.planId}}</mat-cell>
     </ng-container>
 
-    <ng-container  matColumnDef="active">
-      <mat-header-cell *matHeaderCellDef>Active</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.active}}</mat-cell>
+    <ng-container  matColumnDef="monthly">
+      <mat-header-cell *matHeaderCellDef>Monthly</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.monthly}}</mat-cell>
+    </ng-container>
+
+    <ng-container  matColumnDef="yearly">
+      <mat-header-cell *matHeaderCellDef>Yearly</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.yearly}}</mat-cell>
+    </ng-container>
+
+    <ng-container  matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.description}}</mat-cell>
+    </ng-container>
+
+    <ng-container  matColumnDef="features">
+      <mat-header-cell *matHeaderCellDef>Features</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.features}}</mat-cell>
+    </ng-container>
+
+    <ng-container  matColumnDef="suggested">
+      <mat-header-cell *matHeaderCellDef>Suggested</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.suggested}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="action">
@@ -62,7 +75,7 @@
     <mat-toolbar-row>
       <mat-icon fxHide.xs>web</mat-icon>
       <mat-divider [vertical]="true"></mat-divider>
-      <mat-label fxHide.xs> User</mat-label>
+      <mat-label fxHide.xs> Plan</mat-label>
       <mat-divider [vertical]="true"></mat-divider>
       <div class="flex-stretch"></div>
       <mat-divider [vertical]="true"></mat-divider>
@@ -70,5 +83,5 @@
       <button (click)="save()" mat-button mat-stroked-button>Save</button>
     </mat-toolbar-row>
   </mat-toolbar>
-  <app-user-form [roleList]="roleList" [group]="userForm" [user]="user" ></app-user-form>
+  <app-plan-form  [group]="userForm" [plan]="user" ></app-plan-form>
 </div>

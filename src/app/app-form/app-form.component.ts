@@ -52,49 +52,12 @@ export class AppFormComponent implements OnInit {
         "name": [this.item.name],
         "jwkSetUri": [this.item.jwkSetUri],
         "roles": this.fb.array(this.item.roles?this.item.roles:[]),
-        "plans": this.createPlans()
+        "plans": [this.item.plans],
      });
-  }
-
-  get plans(){
-    return this.form.get('plans') as FormArray;
-  }
-
-  createPlans(): FormArray {
-    let arr = this.fb.array([]);
-    this.item.plans?.map((plan)=>{
-      arr.push(this.createPlan(plan));
-    })
-    return arr;
-  }
-
-  createPlan(plan:Plan): FormGroup {
-    return this.fb.group({
-      name:[plan.name],
-      planId:[plan.planId],
-      monthly:[plan.monthly],
-      yearly:[plan.yearly],
-      features: this.fb.array(plan.features?plan.features:[]),
-    });
-  }
-
-  addPlan(): void {
-    let items = this.form.get('plans') as FormArray;
-    items.insert(0,this.createPlan({name:'',monthly:null,yearly:null,description:'', planId:'',features:[],suggested:false}));
-  }
-
-  removePlan(i: number) {
-    let items = this.form.get('plans') as FormArray;
-    items.removeAt(i);
   }
 
   get roleControls(): FormArray {
     return this.form.get('roles') as FormArray;
-  }
-
-  getFeatureControls(index:number): FormArray {
-    let plans = this.form.get('plans') as FormArray;
-    return plans.at(index).get('features') as FormArray;
   }
 
   removeRole(role: any) {
@@ -115,22 +78,7 @@ export class AppFormComponent implements OnInit {
     }
   }
 
-  addFeature(index:number, event: MatChipInputEvent) {
-    const input = event?.input;
-    const value = event?.value;
-    let features = this.getFeatureControls(index);
-    if ((value || "").trim()) {
-      features.push(this.fb.control(value));
-    }
-    if (input) {
-      input.value = "";
-    }
-  }
-
-  removeFeature(i:number,feature: any){
-    const index =  this.getFeatureControls(i).value.indexOf(feature);
-    if (index >= 0) {
-      this.getFeatureControls(i).removeAt(index);
-    }
+  updateDatasource($event: Plan[]) {
+    this.form.get("plans")?.setValue($event);
   }
 }

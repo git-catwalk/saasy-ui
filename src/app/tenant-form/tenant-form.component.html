@@ -41,9 +41,8 @@
       <mat-error>App is required!</mat-error>
     </mat-form-field>
   </div>
-    <app-user-form formGroupName="owner" [roleList]="app.roles" [group]="getTenantUser()" [user]="tenant.owner" ></app-user-form>
-
-   <app-user-table formControlName="users" [dataSource]="tenant.users"></app-user-table>
+  <app-user-form formGroupName="customer" [roleList]="app.roles" [group]="getCustomer()" [user]="tenant.customer" ></app-user-form>
+  <app-user-table [roleList]="app.roles" (dataSourceChange)="updateDatasource($event)" formControlName="users" [dataSource]="tenant.users"></app-user-table>
 
 </form>
 <!--<pre><code>{{form.getRawValue() | json}}</code></pre>-->

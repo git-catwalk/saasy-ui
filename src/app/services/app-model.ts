@@ -14,7 +14,7 @@ export interface Tenant{
  planId:string;
  id:string | null;
  displayName:string;
- owner:User;
+ customer:User;
  users:Array<User>;
 
 }
@@ -60,7 +60,7 @@ export class AppModel {
   }
 
   public static emptyTenant(): Tenant {
-    return {id:null,displayName:'',app:AppModel.emptyIdName(), owner:AppModel.emptyUser(), users:[], planId: ''}
+    return {id:null,displayName:'',app:AppModel.emptyIdName(), customer:AppModel.emptyUser(), users:[], planId: ''}
   }
 
   public static emptyIdName(): IdName {

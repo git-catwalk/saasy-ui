@@ -23,7 +23,7 @@ export class TenantTableComponent implements OnInit {
     'displayName',
     'appName',
     'plan',
-    'ownerName',
+    'customerName',
     'users',
     'active',
     'action'

@@ -29,6 +29,8 @@ import { AppViewComponent } from './app-view/app-view.component';
 import { PricingViewComponent } from './pricing-view/pricing-view.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserTableComponent } from './user-table/user-table.component';
+import { PlanFormComponent } from './plan-form/plan-form.component';
+import { PlanTableComponent } from './plan-table/plan-table.component';
 
 
 @NgModule({
@@ -47,6 +49,8 @@ import { UserTableComponent } from './user-table/user-table.component';
   PricingViewComponent,
   UserFormComponent,
   UserTableComponent,
+  PlanFormComponent,
+  PlanTableComponent,
 
   ],
   imports: [

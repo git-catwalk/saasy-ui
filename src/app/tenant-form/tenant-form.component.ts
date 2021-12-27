@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
+import { FormBuilder, FormGroup} from "@angular/forms";
 import { ActivatedRoute, Router} from "@angular/router";
 import {TenantService} from "../services/tenant.service";
-import {App, AppModel, IdName, Plan, Tenant} from "../services/app-model";
+import {App, AppModel, IdName, Tenant, User} from "../services/app-model";
 import {UserFormComponent} from "../user-form/user-form.component";
 import {AppService} from "../services/app.service";
 
@@ -55,14 +55,14 @@ export class TenantFormComponent implements OnInit {
      return  fb.group({
         "app":[tenant.app],
         "displayName": [ tenant.displayName],
-        "owner": UserFormComponent.createForm(fb,tenant.owner),
-      //  "users": [tenant.users],
+        "customer": UserFormComponent.createForm(fb,tenant.customer),
+        "users": [tenant.users],
         "planId": [tenant.planId]
      });
   }
 
-  getTenantUser():FormGroup {
-    return this.form.get('owner') as FormGroup;
+  getCustomer():FormGroup {
+    return this.form.get('customer') as FormGroup;
   }
 
   getApp() {
@@ -74,5 +74,9 @@ export class TenantFormComponent implements OnInit {
 
   public objectComparisonFunction = function( option:any, value:any ) : boolean {
     return option.id === value.id;
+  }
+
+  updateDatasource($event: User[]) {
+    this.form.get("users")?.setValue($event);
   }
 }

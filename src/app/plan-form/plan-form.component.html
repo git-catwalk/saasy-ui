@@ -1,0 +1,49 @@
+<!-- REACTIVE FORM  -->
+<form name="planForm" [formGroup]="planForm" >
+  <input type="hidden" formControlName="username">
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+    <mat-form-field color="warn"  appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput name="name" formControlName="name" placeholder="Name"/>
+    </mat-form-field>
+    <mat-form-field color="warn"  appearance="outline">
+      <mat-label>Plan Id</mat-label>
+      <input matInput name="planId" formControlName="planId" placeholder="Plan Id"/>
+    </mat-form-field>
+    <mat-form-field color="warn"  appearance="outline">
+      <mat-label>Monthly</mat-label>
+      <input matInput name="monthly" formControlName="monthly" placeholder="Name"/>
+    </mat-form-field>
+    <mat-form-field color="warn"  appearance="outline">
+      <mat-label>Yearly</mat-label>
+      <input matInput name="yearly" formControlName="yearly" placeholder="Name"/>
+    </mat-form-field>
+
+   <!-- <mat-form-field appearance="outline" fxFlex="50" >
+      <mat-label>Email Address</mat-label>
+      <input matInput formControlName="email" required>
+      <mat-icon matSuffix class="secondary-text">email</mat-icon>
+      <mat-error>Email is required!</mat-error>
+    </mat-form-field>-->
+  </div>
+
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <mat-form-field class="example-chip-list">
+      <mat-chip-list #chipList aria-label="Feature selection" formArrayName="features">
+        <mat-chip *ngFor="let feature of getFeatureControls().value" [selectable]="selectable" [removable]="removable"
+                  (removed)="removeFeature(feature)">
+          {{feature}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="New feature..."
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="addFeature($event)">
+      </mat-chip-list>
+    </mat-form-field>
+  </div>
+</form>
+
+<!-- / REACTIVE FORM  -->

@@ -29,9 +29,9 @@
       <mat-cell *matCellDef="let element">{{element.app.name}}</mat-cell>
     </ng-container>
 
-    <ng-container  matColumnDef="ownerName">
-      <mat-header-cell *matHeaderCellDef>Owner Name</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.owner.name}}</mat-cell>
+    <ng-container  matColumnDef="customerName">
+      <mat-header-cell *matHeaderCellDef>Customer Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.customer.name}}</mat-cell>
     </ng-container>
     <ng-container  matColumnDef="users">
       <mat-header-cell *matHeaderCellDef>Users</mat-header-cell>
@@ -39,7 +39,7 @@
     </ng-container>
      <ng-container  matColumnDef="active">
         <mat-header-cell *matHeaderCellDef>Active</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.owner.active}}</mat-cell>
+        <mat-cell *matCellDef="let element">{{element.customer.active}}</mat-cell>
      </ng-container>
       <ng-container  matColumnDef="plan">
         <mat-header-cell *matHeaderCellDef>Plan</mat-header-cell>
@@ -68,5 +68,5 @@
         </td>
       </ng-container>
       <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
-      <mat-row  *matRowDef="let row; columns: tableColumns"></mat-row>
+      <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
 </mat-table>
