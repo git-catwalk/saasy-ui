@@ -62,5 +62,5 @@
         </td>
       </ng-container>
       <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
-      <mat-row  *matRowDef="let row; columns: tableColumns"></mat-row>
+      <mat-row (dblclick)="rowClicked(row)" *matRowDef="let row; columns: tableColumns" ></mat-row>
 </mat-table>

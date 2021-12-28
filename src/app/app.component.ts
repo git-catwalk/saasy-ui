@@ -53,4 +53,8 @@ export class AppComponent {
   isLoggedIn() {
     return this.authService.hasValidToken();
   }
+
+  login() {
+    this.authService.login('/dashboard');
+  }
 }

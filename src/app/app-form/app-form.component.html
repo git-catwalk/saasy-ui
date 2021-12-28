@@ -37,7 +37,7 @@
             </mat-chip-list>
           </mat-form-field>
       </div>
-      <app-plan-table  (dataSourceChange)="updateDatasource($event)" formControlName="plans" [dataSource]="item.plans"></app-plan-table>
+      <app-plan-table  (dataSourceChange)="updateDatasource($event)" [dataSource]="item.plans"></app-plan-table>
 
 </form>
 <!--<pre><code>{{item |json}}</code></pre>-->

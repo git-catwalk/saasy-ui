@@ -78,5 +78,6 @@ export class TenantFormComponent implements OnInit {
 
   updateDatasource($event: User[]) {
     this.form.get("users")?.setValue($event);
+    this.tenant.users = $event;
   }
 }

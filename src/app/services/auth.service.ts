@@ -84,6 +84,9 @@ export class AuthService {
   }
 
   public logout() {
+    this.oauthService.revokeTokenAndLogout(()=>{
+
+    })
     localStorage.clear();
     sessionStorage.clear();
     this.oauthService.logOut();

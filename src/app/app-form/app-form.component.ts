@@ -52,7 +52,7 @@ export class AppFormComponent implements OnInit {
         "name": [this.item.name],
         "jwkSetUri": [this.item.jwkSetUri],
         "roles": this.fb.array(this.item.roles?this.item.roles:[]),
-        "plans": [this.item.plans],
+
      });
   }
 
@@ -80,5 +80,6 @@ export class AppFormComponent implements OnInit {
 
   updateDatasource($event: Plan[]) {
     this.form.get("plans")?.setValue($event);
+    this.item.plans = $event;
   }
 }

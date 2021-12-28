@@ -66,7 +66,7 @@ import { PlanTableComponent } from './plan-table/plan-table.component';
     MatCarouselModule,
     OAuthModule.forRoot({
       resourceServer: {
-        allowedUrls: ['http://localhost:9096/rest/'],
+        allowedUrls: ['http://localhost:9096/rest/','https://saasy-service.bluntsoftware.com/rest/'],
         sendAccessToken: true
       }
     }),
