@@ -31,6 +31,8 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { PlanFormComponent } from './plan-form/plan-form.component';
 import { PlanTableComponent } from './plan-table/plan-table.component';
+import { TenantUserTableComponent } from './tenant-user-table/tenant-user-table.component';
+import { TenantUserFormComponent } from './tenant-user-form/tenant-user-form.component';
 
 
 @NgModule({
@@ -51,6 +53,8 @@ import { PlanTableComponent } from './plan-table/plan-table.component';
   UserTableComponent,
   PlanFormComponent,
   PlanTableComponent,
+  TenantUserTableComponent,
+  TenantUserFormComponent,
 
   ],
   imports: [

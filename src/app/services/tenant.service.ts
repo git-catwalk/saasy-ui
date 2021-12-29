@@ -26,8 +26,8 @@ export class TenantService {
         return this.http.post<Tenant>(this.config.api + "/rest/tenant", model);
     }
 
-    getById(id: string):Observable<Tenant> {
-        return this.http.get<Tenant>(this.config.api + "/rest/tenant/" + id);
+    getById(id: string | null):Observable<Tenant> {
+      return this.http.get<Tenant>(this.config.api + "/rest/tenant/" + id);
     }
 
     removeById(id: string | null):Observable<any>{

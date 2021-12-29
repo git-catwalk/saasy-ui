@@ -16,7 +16,16 @@ export interface Tenant{
  displayName:string;
  customer:User;
  users:Array<User>;
+}
 
+export interface TenantUser {
+  id:string | null;
+  tenantId:string | null;
+  username:string | null;
+  name:string | null;
+  email:string | null;
+  active:boolean;
+  roles:Array<string> | null;
 }
 
 export interface User{
@@ -57,6 +66,10 @@ export class AppModel {
 
   public static emptyUser(): User {
     return {username:'',active:false,name:null,email:'',roles:[]}
+  }
+
+  public static emptyTenantUser(): TenantUser {
+    return {id:null,tenantId:null,username:'',active:false,name:null,email:'',roles:[]}
   }
 
   public static emptyTenant(): Tenant {

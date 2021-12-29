@@ -5,6 +5,7 @@ import {UserProfileService} from "./user-profile.service";
 import {ThemeService} from "./theme.service";
 import {AppService} from "./app.service";
 import {TenantService} from "./tenant.service";
+import {TenantUserService} from "./tenant-user.service";
 
 @NgModule({
   providers: [
@@ -12,6 +13,7 @@ import {TenantService} from "./tenant.service";
     ThemeService,
 		AppService,
 		TenantService,
+    TenantUserService
 
   ],
   imports: [

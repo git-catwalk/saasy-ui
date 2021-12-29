@@ -26,7 +26,7 @@ export class AppService {
         return this.http.post<App>(this.config.api + "/rest/app", model);
     }
 
-    getById(id: string):Observable<App> {
+    getById(id: string | null):Observable<App> {
         return this.http.get<App>(this.config.api + "/rest/app/" + id);
     }
 

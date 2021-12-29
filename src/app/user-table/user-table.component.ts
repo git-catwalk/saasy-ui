@@ -35,9 +35,9 @@ export class UserTableComponent implements OnInit {
     'active',
     'action'
   ];
-
   ngOnInit(): void {
   }
+
 
   add() {
     this.user = AppModel.emptyUser();

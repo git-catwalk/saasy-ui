@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api:"https://saasy-service.bluntsoftware.com"
+  api:"http://localhost:9096"
 };
 
 /*

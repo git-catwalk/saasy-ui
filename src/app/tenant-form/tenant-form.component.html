@@ -42,7 +42,7 @@
     </mat-form-field>
   </div>
   <app-user-form formGroupName="customer" [roleList]="app.roles" [group]="getCustomer()" [user]="tenant.customer" ></app-user-form>
-  <app-user-table [roleList]="app.roles" (dataSourceChange)="updateDatasource($event)" formControlName="users" [dataSource]="tenant.users"></app-user-table>
-
+  <!-- <app-user-table [roleList]="app.roles" (dataSourceChange)="updateDatasource($event)" formControlName="users" [dataSource]="tenant.users"></app-user-table>
+ --> <app-tenant-user-table *ngIf="tenant.id" [tenantId]="tenant.id"></app-tenant-user-table>
 </form>
 <!--<pre><code>{{form.getRawValue() | json}}</code></pre>-->

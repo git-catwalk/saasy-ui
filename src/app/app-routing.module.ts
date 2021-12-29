@@ -10,6 +10,8 @@ import {TenantFormComponent} from "./tenant-form/tenant-form.component";
 import {AppTableComponent} from "./app-table/app-table.component";
 import {TenantTableComponent} from "./tenant-table/tenant-table.component";
 import { AppViewComponent } from './app-view/app-view.component';
+import {TenantUserFormComponent} from "./tenant-user-form/tenant-user-form.component";
+import {TenantUserTableComponent} from "./tenant-user-table/tenant-user-table.component";
 
 
 const routes: Routes = [
@@ -18,6 +20,9 @@ const routes: Routes = [
   {path : 'app-view/:id',     component: AppViewComponent,canActivate: [AuthGuard]},
   {path : 'tenant',     		  component: TenantFormComponent,canActivate: [AuthGuard]},
   {path : 'tenant/:id',       component: TenantFormComponent,canActivate: [AuthGuard]},
+
+  {path : 'tenant-user/:tenantId',      component: TenantUserFormComponent,canActivate: [AuthGuard]},
+  {path : 'tenant-user/:tenantId/:id',  component: TenantUserFormComponent,canActivate: [AuthGuard]},
   {path : 'apps',     			  component: AppTableComponent,canActivate: [AuthGuard]},
   {path : 'tenants',     		  component: TenantTableComponent,canActivate: [AuthGuard]},
   {path : 'home',             component: HomeComponent},
