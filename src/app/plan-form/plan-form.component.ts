@@ -34,10 +34,13 @@ export class PlanFormComponent implements OnInit {
   static createForm(fb: FormBuilder,plan:Plan): FormGroup {
     return  fb.group({
       name:[plan.name],
+      description:[plan.description],
       planId:[plan.planId],
       monthly:[plan.monthly],
       yearly:[plan.yearly],
       features: fb.array(plan.features?plan.features:[]),
+      buttonTitle: [plan.buttonTitle],
+      payUrl: [plan.payUrl]
     });
   }
 

@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AppModel, Plan} from "../services/app-model";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {PlanFormComponent} from "../plan-form/plan-form.component";
+import {compareNumbers} from "@angular/compiler-cli/src/diagnostics/typescript_version";
 
 @Component({
   selector: 'app-plan-table',
@@ -67,6 +68,11 @@ export class PlanTableComponent implements OnInit {
     const index:number = this.findIndex(user);
     index < 0 ? this.dataSource.push(user): this.dataSource[index] = user;
     this.editMode = false;
+    this.sort();
   }
 
+  sort(){
+    this.dataSource = this.dataSource.sort((a,b)=> compareNumbers([a.monthly], [b.monthly]));
+    this.dataSourceChange.emit(this.dataSource);
+  }
 }

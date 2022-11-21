@@ -43,6 +43,18 @@
                (matChipInputTokenEnd)="addFeature($event)">
       </mat-chip-list>
     </mat-form-field>
+    <mat-form-field color="warn"  appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea cols="3" rows="3" matInput name="description" formControlName="description" placeholder="description"></textarea>
+    </mat-form-field>
+    <mat-form-field color="warn"  appearance="outline">
+      <mat-label>Button Title</mat-label>
+      <input matInput name="buttonTitle" formControlName="buttonTitle" placeholder="buttonTitle"/>
+    </mat-form-field>
+    <mat-form-field color="warn"  appearance="outline">
+      <mat-label>Pay Url</mat-label>
+      <input matInput name="payUrl" formControlName="payUrl" placeholder="payUrl"/>
+    </mat-form-field>
   </div>
 </form>
 

@@ -40,10 +40,12 @@ export interface Plan{
  name:string | null;
  description:string | null;
  planId:string | null;
- monthly:number | null;
- yearly:number | null;
+ monthly:number  ;
+ yearly:number  ;
  features:Array<string> | null;
  suggested:boolean | null;
+ buttonTitle:string | null;
+ payUrl: string | null;
 }
 
 export interface IdName{
@@ -61,7 +63,7 @@ export class AppModel {
   }
 
   public static emptyPlan(): Plan {
-    return {name:'',monthly:null,yearly:null,description:'', planId:'',features:[],suggested:false}
+    return {name:'',monthly:19,yearly:98,description:'', planId:'',features:[],suggested:false,buttonTitle:'',payUrl:''}
   }
 
   public static emptyUser(): User {

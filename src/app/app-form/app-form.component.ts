@@ -50,6 +50,7 @@ export class AppFormComponent implements OnInit {
   public createForm():FormGroup{
      return this.fb.group({
         "name": [this.item.name],
+        "id":[{value: this.item.id, disabled:true}],
         "jwkSetUri": [this.item.jwkSetUri],
         "roles": this.fb.array(this.item.roles?this.item.roles:[]),
 
