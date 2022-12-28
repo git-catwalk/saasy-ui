@@ -31,12 +31,18 @@
   </div>
 
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-    <mat-form-field appearance="outline" fxFlex="100">
+    <mat-form-field appearance="outline" fxFlex="50">
       <mat-label>Roles</mat-label>
       <mat-select formControlName="roles" multiple>
         <mat-option *ngFor="let role of roleList" [value]="role">{{role}}</mat-option>
       </mat-select>
       <mat-icon matSuffix class="secondary-text">group</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="50" >
+      <mat-label>Tenant Id</mat-label>
+      <input matInput formControlName="tenantId" required>
+      <mat-icon matSuffix class="secondary-text">email</mat-icon>
     </mat-form-field>
   </div>
 </form>

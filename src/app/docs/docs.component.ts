@@ -22,6 +22,7 @@ export class DocsComponent implements OnInit,AfterViewInit {
     },
     {name: 'Tutorials',
       children:[
+        {name: 'Multi Tenant Angular Spring App Tutorial ', ref: 'catwalk-keycloak'},
         {name: 'Example Documented Tutorial', ref: 'example-tutorial'},
       ]
     },

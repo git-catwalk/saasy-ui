@@ -39,7 +39,7 @@ export class TenantUserFormComponent implements OnInit {
   static createForm(fb: FormBuilder,user:TenantUser): FormGroup {
     return  fb.group({
       "id":  [ user.id],
-      "tenantId":  [ user.tenantId],
+      "tenantId":  [ {value: user.tenantId, disabled:true}],
       "username":  [ user.username],
       "name": [ user.name],
       "email": [ user.email],
