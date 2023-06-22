@@ -1,0 +1,47 @@
+form{
+  margin: 5px 10px 0;
+  padding-bottom: 125px;
+}
+
+mat-form-field{
+  width:95vw
+}
+
+.mat-toolbar {
+  min-height: 50px !important;
+  height: 50px !important;
+}
+
+.mat-toolbar-row {
+  min-height: 50px !important;
+  height: 50px !important;
+}
+
+.flex-stretch {
+  flex: 1 0 auto;
+}
+
+span {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+
+.bottom-margin{
+  margin-bottom: 80px;
+}
+
+.link{
+  cursor: pointer;
+}
+.example-chip-list {
+  width: 100%;
+}
+
+.plan{
+  background-color: rgba(46, 73, 87, 0.12);
+  border-radius: 25px;
+  padding:5px;
+  margin: 5px;
+  border: 1px solid #2e4957;
+}

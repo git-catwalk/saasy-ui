@@ -1,0 +1,87 @@
+<div *ngIf="!editMode">
+  <mat-toolbar color="accent" >
+    <mat-toolbar-row>
+      <mat-icon fxHide.xs>web</mat-icon>
+      <mat-divider [vertical]="true"></mat-divider>
+      <mat-label fxHide.xs> Plans</mat-label>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="flex-stretch"></div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <button (click)="add()" mat-button mat-stroked-button>New</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-table [dataSource]="dataSource">
+
+    <ng-container  matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Plan Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container  matColumnDef="planId">
+      <mat-header-cell *matHeaderCellDef>Plan Id</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.planId}}</mat-cell>
+    </ng-container>
+
+    <ng-container  matColumnDef="monthly">
+      <mat-header-cell *matHeaderCellDef>Monthly</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.monthly}}</mat-cell>
+    </ng-container>
+
+    <ng-container  matColumnDef="yearly">
+      <mat-header-cell *matHeaderCellDef>Yearly</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.yearly}}</mat-cell>
+    </ng-container>
+
+    <ng-container  matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.description}}</mat-cell>
+    </ng-container>
+
+    <ng-container  matColumnDef="features">
+      <mat-header-cell *matHeaderCellDef>Features</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.features}}</mat-cell>
+    </ng-container>
+
+    <ng-container  matColumnDef="suggested">
+      <mat-header-cell *matHeaderCellDef>Suggested</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.suggested}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell id="action" *matHeaderCellDef>Action</mat-header-cell>
+      <mat-cell  (click)="$event.stopPropagation()" *matCellDef="let element" fxLayoutGap="5px">
+        <button  mat-icon-button [matMenuTriggerFor]="action_menu" aria-label="Action menu selection">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu xPosition="before"  #action_menu="matMenu">
+          <button  class="action-menu" (click)="rowClicked(element)" mat-menu-item>
+            <mat-icon color="accent">edit</mat-icon>
+            Edit
+          </button>
+          <button (click)="delete(element)" mat-menu-item>
+            <mat-icon color="accent">delete</mat-icon>
+            Delete
+          </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+    <mat-row (dblclick)="rowClicked(row)" *matRowDef="let row; columns: tableColumns"></mat-row>
+  </mat-table>
+</div>
+<div *ngIf="editMode">
+  <mat-toolbar color="accent" >
+    <mat-toolbar-row>
+      <mat-icon fxHide.xs>web</mat-icon>
+      <mat-divider [vertical]="true"></mat-divider>
+      <mat-label fxHide.xs> Plan</mat-label>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="flex-stretch"></div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <button (click)="back()" mat-button mat-stroked-button>Back</button>
+      <button (click)="save()" mat-button mat-stroked-button>Save</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <app-plan-form  [group]="userForm" [plan]="user" ></app-plan-form>
+</div>

@@ -1,0 +1,47 @@
+<mat-toolbar color="accent" >
+  <mat-toolbar-row>
+    <mat-divider [vertical]="true"></mat-divider>
+    <mat-label> App</mat-label>
+    <div class="flex-stretch"></div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <button (click)="back()" mat-button mat-stroked-button>Back</button>
+    <mat-divider [vertical]="true"></mat-divider>
+    <button (click)="save()" mat-button mat-stroked-button>Save</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form fxLayout="column" [formGroup]="form">
+
+      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <mat-form-field color="warn"  appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput name="name" formControlName="name" placeholder="Name"/>
+        </mat-form-field>
+        <mat-form-field color="warn"  appearance="outline">
+          <mat-label>App ID</mat-label>
+          <input matInput name="id" formControlName="id" placeholder="Name"/>
+        </mat-form-field>
+        <mat-form-field color="warn"  appearance="outline">
+          <mat-label>jwkSetUri</mat-label>
+          <input matInput name="jwkSetUri" formControlName="jwkSetUri" placeholder="jwkSetUri"/>
+        </mat-form-field>
+      </div>
+      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+          <mat-form-field class="example-chip-list">
+            <mat-chip-list #chipList aria-label="Role selection" formArrayName="roles">
+              <mat-chip *ngFor="let role of roleControls.value" [selectable]="selectable" [removable]="removable"
+                        (removed)="removeRole(role)">
+                {{role}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input placeholder="New role..."
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="addRole($event)">
+            </mat-chip-list>
+          </mat-form-field>
+      </div>
+      <app-plan-table  (dataSourceChange)="updateDatasource($event)" [dataSource]="item.plans"></app-plan-table>
+
+</form>
+<!--<pre><code>{{item |json}}</code></pre>-->
